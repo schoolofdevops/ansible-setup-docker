@@ -10,9 +10,14 @@ Run the Docker Compose
  
    - docker-compose up -d
 
-Access Credentials
+Controller Access Credentials
 
    - http://ip
 
    - username: admin
+
    - password: standard_ic_pass
+
+Nodes ssh access
+   
+   - root/123456

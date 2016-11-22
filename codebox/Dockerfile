@@ -1,5 +1,5 @@
 From tangym/codebox
-MAINTAINER Babu R <babu@initcron.org>
+MAINTAINER Babu
 
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
