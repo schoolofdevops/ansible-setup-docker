@@ -1,0 +1,52 @@
+version: '2'
+
+networks:
+  custom:
+    driver: bridge
+
+services:
+  control:
+    build: ./codebox
+    image: codebox
+    ports:
+      - "80:8000"
+    environment:
+      CODEBOX_USERNAME: admin
+      CODEBOX_PASSWORD: password
+    volumes:
+      - ./code:/workspace
+    networks:
+      - custom
+    container_name: control
+ 
+  lb:
+    build: ./nodes
+    container_name: lb
+    ports:
+       - "8080:22"
+    networks:
+      - custom
+
+  app1:
+    build: ./nodes
+    ports:
+       - "8081:22"
+    networks:
+      - custom
+    container_name: app1
+ 
+  app2:
+    build: ./nodes
+    ports:
+      - "8082:22"
+    networks:
+      - custom
+    container_name: app2
+ 
+  db:
+    build: ./nodes
+    ports:
+      - "8083:22"
+    networks:
+      - custom
+    container_name: db
